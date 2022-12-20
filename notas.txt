@@ -57,3 +57,10 @@ app.use(EmitterBus);
 app.use(blur);
 
 app.mount("#app");
+
+==============================================
+codeanywhere
+==============================================
+nvm install 16
+node --version
+nvm alias default 16
