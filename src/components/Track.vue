@@ -39,7 +39,9 @@
 </template>
 
 <script>
+  import trackMixin from '@/mixins/track';
   export default {
+    mixins: [ trackMixin ],
     props: {
       track: {
         type: Object, 
@@ -47,13 +49,13 @@
       }
     },
     methods: {
-      selectTrack() {
-        if (!this.track.preview_url) { return }
-        this.$emit('select', this.track.data.id)
-        this.$bus.emit('set-track', this.track)
-      },
+      // selectTrack() {
+      //   if (!this.track.preview_url) { return }
+      //   this.$emit('select', this.track.data.id)
+      //   this.$bus.emit('set-track', this.track)
+      // },
       goToTrack(id) {
-        if (!this.track.preview_url) { return }
+        // if (!this.track.preview_url) { return }
         this.$router.push({ name: 'track', params: { id } })
       },
       convertMsToMm(ms) {

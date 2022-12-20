@@ -1,11 +1,15 @@
 <template>
   <main>
+    <!-- <Transition name="move"> -->
     <PmNotification v-show="showNotification" :class="{'is-success': isFound, 'is-danger': !isFound}">
       <template v-slot:body>
         <p>{{ isFound ? `Se encontraron ${this.tracks.length} resultados 😊` : 'No se encontraron resultados 😔' }}</p>
       </template>
     </PmNotification>
-    <PmLoader v-show="isLoading"/>
+    <!-- </Transition> -->
+    <Transition name="move">
+      <PmLoader v-show="isLoading"/>
+    </Transition>
     <section class="section"  v-show="!isLoading">
       <nav class="nav">
         <div class="container is-flex">

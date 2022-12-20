@@ -1,11 +1,11 @@
 <template lang="">
-  <div v-if="track && track.data" class="content">
+  <div v-if="track && (track.data || track[0])" class="content">
     <p>
-      <img :src="track.data.albumOfTrack.coverArt.sources[0].url" :alt="track.data.albumOfTrack.name">
+      <img :src="track.data ? track.data.albumOfTrack.coverArt.sources[0].url : track[0].album.images[0].url" :alt="track.data ? track.data.albumOfTrack.name : track[0].name">
     </p>
     <p>
-      <strong >{{track.data.albumOfTrack.name}}</strong>
-      <small>[{{ convertMsToMm(track.data.duration.totalMilliseconds) }}]</small>
+      <strong >{{track.data ? track.data.albumOfTrack.name : track[0].name}}</strong>
+      <small>[{{ convertMsToMm(track.data ? track.data.duration.totalMilliseconds: track[0].duration_ms) }}]</small>
     </p>
     <p>
       <audio src="" controls="">
@@ -16,18 +16,22 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   export default {
-    data(){
-      return {
-        track: {
+    // data(){
+    //   return {
+    //     track: {
           
-        }
-      }
-    },
-    created() {
-      this.$bus.on('set-track', (track) => {
-        this.track = track
-      })
+    //     }
+    //   }
+    // },
+    // created() {
+    //   this.$bus.on('set-track', (track) => {
+    //     this.track = track
+    //   })
+    // },
+    computed: {
+      ...mapState(['track'])
     },
     methods: {
       convertMsToMm(ms) {

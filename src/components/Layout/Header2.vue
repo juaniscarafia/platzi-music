@@ -18,7 +18,7 @@
             </div>
             <div id="navbarBasicExample" class="navbar-menu" :class="{'is-active': menuMobileIsActive, '': !menuMobileIsActive}">
               <div class="navbar-start">
-                <router-link class="navbar-item" :to="{ name: 'search' }">Buscar</router-link>
+                <router-link class="navbar-item" :to="{ path: '/', name: 'search' }">Buscar</router-link>
                 <router-link class="navbar-item" to="about">Nosotros</router-link>
               </div>
             </div>

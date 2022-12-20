@@ -38,8 +38,8 @@ trackService.getById = async function (id) {
       },
       headers: configService.options.headers,
     })
-    .then(res => res.data)
-    .catch(error => error);
+    .then((res) => res.data)
+    .catch((error) => error);
 };
 
 export default trackService;
